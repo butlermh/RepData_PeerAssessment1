@@ -39,7 +39,7 @@ stepsByDate <- tapply(data$steps, data$date, sum, na.rm=TRUE)
 hist(
     stepsByDate, 
     breaks=10,
-    main="Histogram of the total number of steps taken per day",
+    main="Total number of steps taken per day",
     col="red", 
     xlab="Total steps taken each day")
 ```
@@ -74,7 +74,7 @@ hour = maxInterval %/% 60
 minutes = maxInterval %% 60
 result <- paste(hour, ":", minutes, sep="")
 ```
-The interval, **`r maxInterval`**, corresponding to **`r result`**, contained **`r round(maxSteps)`** corresponds to the maximum number of steps in an interval. 
+The interval, **`r maxInterval`**, corresponding to **`r result`**, contained **`r round(maxSteps)`**, the maximum average number of steps in any interval. 
 
 ## Inputing missing values
 
@@ -95,7 +95,7 @@ avgSteps <- mean(replace(avgStepsPerDay, is.na(avgStepsPerDay), 0))
 avgStepsPerDay <- replace(avgStepsPerDay, is.na(avgStepsPerDay), avgSteps)
 ```
 
-Create a new dataset that is equal to the original dataset but with the missing data filled in.:
+Create a new dataset that is equal to the original dataset but with the missing data filled in:
 ```{r}
 impute <- data
 for (i in 1:nrow(impute)) {
@@ -113,7 +113,7 @@ hist(
     breaks=10, 
     col="red", 
     xlab="Steps taken each day", 
-    main="Histogram of the total number of steps taken per day with imputed missing values")
+    main="Total number of steps taken per day with imputed missing values")
 ```
 As you can see, the histogram is different because before there were several days with frequency 0. They have now been removed. 
 
@@ -122,7 +122,7 @@ Calculate and report the mean and median total number of steps taken per day:
 meanStepsI <- mean(stepsByDateI)
 medianStepsI <- median(stepsByDateI)
 ```
-The median number of steps is **`r medianStepsI`** unchanged from **`r medianSteps`** whereas the mean number of steps is **`r round(meanStepsI)`** has changed from **`r round(meanSteps)`**.
+The median number of steps is **`r medianStepsI`** unchanged from **`r medianSteps`** after replacing missing values whereas the mean number of steps is **`r round(meanStepsI)`** has increased from **`r round(meanSteps)`** after replacing missing values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

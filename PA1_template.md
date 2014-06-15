@@ -45,7 +45,7 @@ Make a histogram of the total number of steps taken each day:
 
 ```r
 stepsByDate <- tapply(data$steps, data$date, sum, na.rm = TRUE)
-hist(stepsByDate, breaks = 10, main = "Histogram of the total number of steps taken per day", 
+hist(stepsByDate, breaks = 10, main = "Total number of steps taken per day", 
     col = "red", xlab = "Total steps taken each day")
 ```
 
@@ -86,7 +86,7 @@ minutes = maxInterval%%60
 result <- paste(hour, ":", minutes, sep = "")
 ```
 
-The interval, **835**, corresponding to **13:55**, contained **206** corresponds to the maximum number of steps in an interval. 
+The interval, **835**, corresponding to **13:55**, contained **206**, the maximum average number of steps in any interval. 
 
 ## Inputing missing values
 
@@ -111,7 +111,7 @@ avgStepsPerDay <- replace(avgStepsPerDay, is.na(avgStepsPerDay), avgSteps)
 ```
 
 
-Create a new dataset that is equal to the original dataset but with the missing data filled in.:
+Create a new dataset that is equal to the original dataset but with the missing data filled in:
 
 ```r
 impute <- data
@@ -128,7 +128,7 @@ Make a histogram of the total number of steps taken each day:
 ```r
 stepsByDateI <- tapply(impute$steps, impute$date, sum, na.rm = TRUE)
 hist(stepsByDateI, breaks = 10, col = "red", xlab = "Steps taken each day", 
-    main = "Histogram of the total number of steps taken per day with imputed missing values")
+    main = "Total number of steps taken per day with imputed missing values")
 ```
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
